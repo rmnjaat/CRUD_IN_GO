@@ -45,6 +45,7 @@ func main() {
 
 	run_tenant_migration(rows, DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DATABASE_DRIVER)
 
+	defer rows.Close()
 }
 
 func run_tenant_migration(rows *sql.Rows, DB_HOST string, DB_PORT string, DB_USER string, DB_PASSWORD string, DATABASE_DRIVER string) {
@@ -95,7 +96,7 @@ func get_db_names(db *sql.DB) *sql.Rows {
 	if err != nil {
 		log.Fatal("Error fetching tenant db names: ", err)
 	}
-	defer rows.Close()
+
 	return rows
 }
 

@@ -17,7 +17,7 @@ func (l *Logger) writeLog(level, message string) {
 
 	file_name := filepath.Base(file)
 
-	timestamp := time.Now().Format("2006-01-02 15:04:05")
+	timestamp := time.Now().UTC().Format("2006-01-02 15:04:05")
 
 	logEntry := fmt.Sprintf("[%s] [%s] [%s] [%s:%d] %s \n",
 		l.module_name,
